@@ -1,0 +1,185 @@
+package edu.duke.ece651.client;
+
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFrame;
+
+import edu.duke.ece651.shared.GameMap;
+import edu.duke.ece651.shared.Message;
+import edu.duke.ece651.shared.Territory;
+
+
+
+public class BackToGamePrompt extends Prompt {
+  private Client client;
+  private Client gameChosen;  
+  private ClientHost clientHost;
+
+  public BackToGamePrompt(JFrame frame, ActionListener controlListener,
+                          String notifyStr, Client client,ClientHost clientHost){
+    super(frame,  controlListener,  notifyStr,client.getPlayer());
+    this.client = client;
+    this.clientHost = clientHost;
+  }
+
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    try{
+    String command = e.getActionCommand();
+    System.out.println("=== BackToGamePrompt listener : " + command);
+    String cmds[] = command.split(",");
+
+    if(cmds[0].equals("gameToBackListener")){
+      gameChosen = gameToBackListener(cmds);
+      // authenticate the game, and call authenticateListener
+      System.out.println("--  clientHost name "+gameChosen.getPlayer().getName());
+      System.out.println("--  clientHost password "+gameChosen.getPassword());
+      authenticate(gameChosen);        
+    }
+
+    if(cmds[0].equals("authenticateListener")){
+      authenticateListener(gameChosen,tpanel.getTextFields());
+      // this.frame.setVisible(false);
+    }
+
+      /* Methods for listening to player return to previous game */
+      if(cmds[0].equals("gameToBackListener")){
+        gameChosen = gameToBackListener(cmds);
+        // authenticate the game, and call authenticateListener
+        System.out.println("--  clientHost name "+gameChosen.getPlayer().getName());
+        System.out.println("--  clientHost password "+gameChosen.getPassword());
+        authenticate(gameChosen);        
+      }
+
+      if(cmds[0].equals("authenticateListener")){
+        authenticateListener(gameChosen,tpanel.getTextFields());
+        // this.frame.setVisible(false);
+        
+      }
+
+      // 5. Let player connect to game and register
+      if (cmds[0].equals("loginPanel player registered")) {
+        // update client host with joined game
+        String playerName = this.tpanel.getInput(0);
+        String password = this.tpanel.getInput(1);
+        
+        /*
+        this.client = new Client(playerName, clientHost.getGameInfo().getGameServerPort(),
+                                 clientHost.getGameInfo().getGameServerIP(), this.frame,
+                                 this,this.isDebug);
+        this.clientHost.addToGames(this.client);        
+        this.client.setPassword(password);
+        this.clientHost.getGames().add(client);        
+        this.clientHost.setCurGame(client);
+        this.client.setIsInRoom(true);        
+        
+        System.out.println("PlayerController: startClient()");
+        int idxString = clientHost.getGames().indexOf(clientHost.getCurGame());
+        Thread th = new Thread(this.client,
+                               "game_" + Integer.toString(idxString));
+        th.start();
+        */
+      }
+    } catch(Exception except){
+      except.printStackTrace();
+    }
+      
+    
+  }
+  
+  /*
+    Ask player if they want to join a previous game
+   */
+  public void displayWantToComebackPanel()  {
+    this.frame.getContentPane().removeAll();        
+    this.frame.setVisible(true);
+    System.out.println("Want to come back panel displayed:");
+    ArrayList<String> options = new ArrayList<>();
+    options.add("Yes");
+    options.add("No");
+    bpanel = new ButtonsPanel(0, 0, "wantToComeBack listener",
+                                    "Do you want to go back to a previous game?",
+                                    options, this);
+    bpanel.generatePanel();
+    this.frame.add(bpanel.getPanel());
+    this.frame.getContentPane().revalidate();
+    this.frame.getContentPane().repaint();        
+  }
+  
+  private void wantToComebackListener(String[] cmds) throws Exception{
+    System.out.println("playerLeftGameListener");
+    if (cmds[2].equals("Yes")){
+      System.out.println("here");
+      // join a previously connected game
+      // gameToBack();
+      promptChoosePreviousGame();
+    }
+
+    if (cmds[2].equals("No")){
+      // join a brand new game
+      // displayJoinGamePanel();
+      this.clientHost.refreshAndWaitAvailableGames();
+    }    
+  }
+
+  private Client gameToBackListener(String[] cmds){
+    int oldgameIdx = Integer.valueOf(cmds[1]);
+    return this.clientHost.getGames().get(oldgameIdx);
+  }
+  
+
+  
+  private void  promptChoosePreviousGame() {
+    System.out.println("client controller - prompt choose previous game");
+    this.frame.getContentPane().removeAll();    
+    System.out.println("Choosing game:");
+    ArrayList<String> gameOptions = new ArrayList<>();
+    for (int i = 0; i < this.clientHost.getGames().size(); i++) {
+      gameOptions.add("Game " + Integer.toString(i) + "\n");
+    }
+    bpanel = new ButtonsPanel(0, 0, "gameToBackListener",
+                                    this.clientHost.getOldGamesStr(), gameOptions, this);
+    bpanel.generatePanel();
+    this.frame.getContentPane().removeAll();
+    // add new panel
+    this.frame.add(bpanel.getPanel());
+    this.frame.getContentPane().revalidate();
+    this.frame.getContentPane().repaint();        
+
+  }
+
+  private void authenticate(Client clt) {
+    this.frame.getContentPane().removeAll();    
+    ArrayList<String> tfStrings = new ArrayList<>();
+    tfStrings.add("Please type in PlayerName:");
+    tfStrings.add("Please type in Password:");
+    tpanel = new TextFieldPanel(0,0, "authenticateListener",
+                                "Please authenticate",tfStrings,this);
+    tpanel.generatePanel();
+    this.frame.add(tpanel.getPanel());
+    this.frame.getContentPane().revalidate();
+    this.frame.getContentPane().repaint();        
+    
+  }
+
+  private void authenticateListener(Client clt, ArrayList<String> tfields) throws Exception {
+    String playerName = tpanel.getInput(0);
+    String password = tpanel.getInput(1);
+    System.out.println("authenticateListener - playerName: " + playerName + ": " +clt.getPlayer().getName());
+    System.out.println("authenticateListener - password: " + password + ": " +clt.getPassword());     
+    if (!clt.getPlayer().getName().equals(playerName) || !clt.getPassword().equals(password)) {
+      throw new Exception("Wrong name or password. Please try again");
+    }
+    
+    this.client = gameChosen;
+    clientHost.setCurGame(client);
+    client.setIsInRoom(true);
+    client.waitThenAction();
+  }
+
+}

@@ -1,0 +1,7 @@
+package edu.duke.ece651.hostmaster;
+
+public class Player {
+  public Coordinate readCoordinate(){
+    return new Coordinate();
+  }
+}
