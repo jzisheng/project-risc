@@ -13,12 +13,11 @@ This game features the following features
 
 * Fog of War (Players can only see information of territories near them)
 
+Example of moving a spy to a obscured location
 ![Scouts and spies](https://github.com/jzisheng/project-risc/blob/master/images/spy.gif)
+
+The player owns the territory Oz. Midkemia is not a adjacent territory, therefore not visible
 ![Fog of war example](https://github.com/jzisheng/project-risc/blob/master/images/fog-of-war.gif)
-
-
-
-
 
 Our UML diagram can be viewed here [UML Diagram](https://docs.google.com/drawings/d/1ES76J9AJ3MGDxcjzBDHp8wPLWJiUc8oNKI2NgELMtjI/edit?usp=sharing)
 
