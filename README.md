@@ -12,6 +12,8 @@ This game features the following
 * Scouts (Players can send scout units into unknown territory)
 * Fog of War (Players can only see information of territories near them)
 
+![UML Diagram](https://docs.google.com/drawings/d/1ES76J9AJ3MGDxcjzBDHp8wPLWJiUc8oNKI2NgELMtjI/edit?usp=sharing)
+
 # Requirements
 * Java 11
 
