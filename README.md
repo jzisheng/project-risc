@@ -14,6 +14,8 @@ This game features the following features
 * Scouts (Players can send scout units into unknown territory)
 * Fog of War (Players can only see information of territories near them)
 
+
+## Gameplay Footage
 Example of moving a spy to a obscured location
 ![Scouts and spies](https://github.com/jzisheng/project-risc/blob/master/images/spy.gif)
 
