@@ -12,7 +12,6 @@ Each game server can support 2-5 players. Players have the ability to switch bet
 This game features the following features
 * Online Mutiplayer (Players can play against each other online)
 * Scouts (Players can send scout units into unknown territory)
-
 * Fog of War (Players can only see information of territories near them)
 
 Example of moving a spy to a obscured location
