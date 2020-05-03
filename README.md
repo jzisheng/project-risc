@@ -10,9 +10,11 @@ Each game server can support 2-5 players. Players have the ability to switch bet
 This game features the following features
 * Online Mutiplayer (Players can play against each other online)
 * Scouts (Players can send scout units into unknown territory)
-![Gameplay footage](https://github.com/jzisheng/project-risc/blob/master/images/spy.gif)
+
 * Fog of War (Players can only see information of territories near them)
-![Gameplay footage](https://github.com/jzisheng/project-risc/blob/master/images/fog-of-war.gif)
+
+![Scouts and spies](https://github.com/jzisheng/project-risc/blob/master/images/spy.gif)
+![Fog of war example](https://github.com/jzisheng/project-risc/blob/master/images/fog-of-war.gif)
 
 
 
