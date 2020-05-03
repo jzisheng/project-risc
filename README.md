@@ -1,8 +1,40 @@
 # Project RISC (Really Interesting Strategic Conquest Game)
-
-Gameplay footage of a user making a move, attacking, and conquering.
+This is a online multiplayer strategic conquest game made in ECE651 Software Engineering inspired by the board game "RISK". 
 
 ![Gameplay footage](https://github.com/jzisheng/project-risc/blob/master/gameplay.gif)
 
+*Gameplay footage of a user making a move, attacking, and conquering.*
 
-This is a strategic conquest game made in ECE651 Software Engineering inspired by the board game "RISK".
+Each game server can support 2-5 players. Players have the ability to switch between active games.
+
+This game features the following
+* Online Mutiplayer (Players can play against each other online)
+* Scouts (Players can send scout units into unknown territory)
+* Fog of War (Players can only see information of territories near them)
+
+# Requirements
+* Java 11
+
+# Running
+
+First start a hostmaster, this module is reponsible for tracking all game servers
+
+`./gradlew run-hostmaster`
+
+Start a game server for clients to connect to. Follow the text prompts
+
+`./gradlew run-server`
+
+
+Each player starts a game client to connect to the server
+
+`./gradlew run-client`
+
+### Teammates
+Zisheng Jason Chang
+
+Yisong Zou
+
+Jiateng Mao
+
+Aiden Mao
