@@ -1,7 +1,7 @@
 # Project RISC (Really Interesting Strategic Conquest Game)
 This is a online multiplayer strategic conquest game made in ECE651 Software Engineering inspired by the board game "RISK". 
 
-![Gameplay footage](https://github.com/jzisheng/project-risc/blob/master/gameplay.gif)
+![Gameplay footage](https://github.com/jzisheng/project-risc/blob/master/images/gameplay.gif)
 
 *Gameplay footage of a user making a move, attacking, and conquering.*
 
