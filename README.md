@@ -14,14 +14,6 @@ This game features the following features
 * Scouts (Players can send scout units into unknown territory)
 * Fog of War (Players can only see information of territories near them)
 
-
-## Gameplay Footage
-Example of moving a spy to a obscured location
-![Scouts and spies](https://github.com/jzisheng/project-risc/blob/master/images/spy.gif)
-
-The player owns the territory Oz. Midkemia is not a adjacent territory, therefore not visible
-![Fog of war example](https://github.com/jzisheng/project-risc/blob/master/images/fog-of-war.gif)
-
 # Requirements
 * Java 11
 
