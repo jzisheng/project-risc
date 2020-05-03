@@ -7,12 +7,18 @@ This is a online multiplayer strategic conquest game made in ECE651 Software Eng
 
 Each game server can support 2-5 players. Players have the ability to switch between active games.
 
-This game features the following
+This game features the following features
 * Online Mutiplayer (Players can play against each other online)
 * Scouts (Players can send scout units into unknown territory)
+![Gameplay footage](https://github.com/jzisheng/project-risc/blob/master/images/spy.gif)
 * Fog of War (Players can only see information of territories near them)
+![Gameplay footage](https://github.com/jzisheng/project-risc/blob/master/images/fog-of-war.gif)
 
-[UML Diagram](https://docs.google.com/drawings/d/1ES76J9AJ3MGDxcjzBDHp8wPLWJiUc8oNKI2NgELMtjI/edit?usp=sharing)
+
+
+
+
+Our UML diagram can be viewed here [UML Diagram](https://docs.google.com/drawings/d/1ES76J9AJ3MGDxcjzBDHp8wPLWJiUc8oNKI2NgELMtjI/edit?usp=sharing)
 
 # Requirements
 * Java 11
