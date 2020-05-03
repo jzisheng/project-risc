@@ -1,6 +1,8 @@
 # Project RISC (Really Interesting Strategic Conquest Game)
 This is a online multiplayer strategic conquest game made in ECE651 Software Engineering inspired by the board game "RISK". 
 
+Our UML diagram can be viewed here [UML Diagram](https://docs.google.com/drawings/d/1ES76J9AJ3MGDxcjzBDHp8wPLWJiUc8oNKI2NgELMtjI/edit?usp=sharing)
+
 ![Gameplay footage](https://github.com/jzisheng/project-risc/blob/master/images/gameplay.gif)
 
 *Gameplay footage of a user making a move, attacking, and conquering.*
@@ -18,8 +20,6 @@ Example of moving a spy to a obscured location
 
 The player owns the territory Oz. Midkemia is not a adjacent territory, therefore not visible
 ![Fog of war example](https://github.com/jzisheng/project-risc/blob/master/images/fog-of-war.gif)
-
-Our UML diagram can be viewed here [UML Diagram](https://docs.google.com/drawings/d/1ES76J9AJ3MGDxcjzBDHp8wPLWJiUc8oNKI2NgELMtjI/edit?usp=sharing)
 
 # Requirements
 * Java 11
